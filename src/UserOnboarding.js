@@ -9,9 +9,8 @@ class UserOnboarding {
     const iframe = document.createElement("iframe");
     iframe.src = "https://dev.fd.1silverbullet.tech/product/product_list";
     iframe.className = "user-onboarding-iframe";
-    // iframe.style.position = "fixed";
+    iframe.style.position = "absolute";
     iframe.style.top = "0";
-    iframe.style.left = "0";
     iframe.style.width = "35%";
     iframe.style.height = "100vw";
     iframe.style.border = "none";
