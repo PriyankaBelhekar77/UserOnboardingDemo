@@ -2,12 +2,12 @@ class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
   constructor(props) {
-
+    this.src = props.src;
   }
 
   #createIFrame() {
     const iframe = document.createElement("iframe");
-    iframe.src = "https://dev.fd.1silverbullet.tech/product/product_list";
+    iframe.src = this.src;
     iframe.className = "user-onboarding-iframe";
     iframe.style.position = "absolute";
     iframe.style.top = "0";

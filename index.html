@@ -65,13 +65,14 @@
   </header>
   <div id="root"></div>
   <button class="onboarding-button" onclick="(function(){
-    const test = new window.userOnboarding();
+    const src = `https://dev.fd.1silverbullet.tech/product/product_list`;
+    const test = new window.userOnboarding({src});
     test.start();
   }())">
     Begin Onboarding
   </button>
 </body>
-<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@latest/src/UserOnboarding.js"
+<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@main/src/UserOnboarding.js"
   type="module">
   </script>
 
