@@ -67,13 +67,14 @@
   <button class="onboarding-button" onclick="(function(){
     const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9';
     const src = `http://localhost:3000?authToken=${authToken}`;
-    const test = new window.userOnboarding(src, '100%', '100vw', '#000000');
+    const test = new window.userOnboarding('', '50%', '100%', '#FFFFF');
     test.start();
   }())">
     Begin Onboarding
   </button>
 </body>
-<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@main/src/UserOnboarding.js"
+<script async
+  src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@45b5f3ff45d8e193c3f9d7800e20cb9294c47ff5/src/UserOnboarding.js"
   type="module">
   </script>
 
