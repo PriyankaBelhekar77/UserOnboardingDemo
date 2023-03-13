@@ -1,8 +1,11 @@
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor(props) {
-    this.src = props.src;
+  constructor(src, authToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF') {
+    this.src = src;
+    this.width = width;
+    this.height = height;
+    this.backgroundColor = backgroundColor;
   }
 
   #createIFrame() {
@@ -11,10 +14,10 @@ class UserOnboarding {
     iframe.className = "user-onboarding-iframe";
     iframe.style.position = "absolute";
     iframe.style.top = "0";
-    iframe.style.width = "35%";
-    iframe.style.height = "100vw";
+    iframe.style.width = this.width;
+    iframe.style.height = this.height;
     iframe.style.border = "none";
-    iframe.style.backgroundColor = "#FFFFFF";
+    iframe.style.backgroundColor = this.backgroundColor;
     iframe.style.display = "flex";
     iframe.style.justifyContent = "center";
     iframe.style.alignItems = "center";
