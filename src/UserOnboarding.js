@@ -33,7 +33,11 @@ class UserOnboarding {
   }
 
   start() {
-    this.#renderIFrame();
+    if (this.src === "") {
+      alert("Please enter valid search url!!");
+    } else {
+      this.#renderIFrame();
+    }
   }
 }
 
