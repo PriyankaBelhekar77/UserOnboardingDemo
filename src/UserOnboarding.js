@@ -1,7 +1,7 @@
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor(src, authToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF') {
+  constructor(src, width = '35%', height = '100vw', backgroundColor = '#FFFFFF') {
     this.src = src;
     this.width = width;
     this.height = height;
