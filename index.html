@@ -66,14 +66,14 @@
   <div id="root"></div>
   <button class="onboarding-button" onclick="(function(){
     const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9';
-    const src = `https://dev.fd.1silverbullet.tech/product/product_list?authToken=+${authToken}`;
-    const test = new window.userOnboarding({src, authToken, width: '35%', height: '100vw', backgroundColor: '#FFFFFF' });
+    const src = `http://localhost:3000?authToken=+${authToken}`;
+    const test = new window.userOnboarding({src, authToken, width: '100%', height: '100vw', backgroundColor: '#000000' });
     test.start();
   }())">
     Begin Onboarding
   </button>
 </body>
-<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@latest/src/UserOnboarding.js"
+<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@main/src/UserOnboarding.js"
   type="module">
   </script>
 

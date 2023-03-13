@@ -14,8 +14,8 @@ class UserOnboarding {
     iframe.className = "user-onboarding-iframe";
     iframe.style.position = "absolute";
     iframe.style.top = "0";
-    iframe.style.width = this.width;
-    iframe.style.height = this.height;
+    iframe.width = this.width;
+    iframe.height = this.height;
     iframe.style.border = "none";
     iframe.style.backgroundColor = this.backgroundColor;
     iframe.style.display = "flex";
