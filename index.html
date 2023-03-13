@@ -67,7 +67,7 @@
   <button class="onboarding-button" onclick="(function(){
     const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9';
     const src = `http://localhost:3000?authToken=${authToken}`;
-    const test = new window.userOnboarding({src, authToken, width: '100%', height: '100vw', backgroundColor: '#000000' });
+    const test = new window.userOnboarding(src, authToken, '100%', '100vw', '#000000');
     test.start();
   }())">
     Begin Onboarding
