@@ -1,4 +1,4 @@
-import { VALIDATE_ARGS } from './constants';
+import { VALIDATE_ARGS } from '../constants';
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
