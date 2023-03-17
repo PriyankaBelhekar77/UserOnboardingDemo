@@ -1,10 +1,10 @@
-import { VALIDATE_ARGS } from '../constants';
+import { VALIDATE_ARGS } from "../constants";
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor({ src, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF' }) {
+  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF' }) {
     UserOnboarding.#evaluateArgs(
-      src,
+      domainLink,
       VALIDATE_ARGS.domainLink.argName
     );
     UserOnboarding.#evaluateArgs(
@@ -12,7 +12,7 @@ class UserOnboarding {
       VALIDATE_ARGS.accessToken.argName
     );
 
-    this.src = src;
+    this.domainLink = domainLink;
     this.width = width;
     this.height = height;
     this.backgroundColor = backgroundColor;
@@ -32,7 +32,7 @@ class UserOnboarding {
 
   #createIFrame() {
     const iframe = document.createElement("iframe");
-    iframe.src = this.src;
+    iframe.src = this.domainLink;
     iframe.className = "user-onboarding-iframe";
     iframe.style.position = "absolute";
     iframe.style.top = "0";
@@ -55,10 +55,11 @@ class UserOnboarding {
   }
 
   start() {
+    this.#renderIFrame();
     // if (this.src === "") {
     //   alert("Please enter valid search url!!");
     // } else {
-    this.#renderIFrame();
+    // this.#renderIFrame();
     // }
   }
 }

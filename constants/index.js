@@ -2,7 +2,7 @@ export const DOMAIN_REGEX = '^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$';
 
 export const VALIDATE_ARGS = {
   domainLink: {
-    argName: 'src',
+    argName: 'domainLink',
     regex: DOMAIN_REGEX,
     error: '[1SilverBullet][user-onboarding] URL link provided is invalid. Please pass correct URL'
   },
