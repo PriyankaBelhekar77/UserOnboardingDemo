@@ -6,16 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="FD Onboarding Demo" />
-  <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" /> -->
   <title>FD Onboarding</title>
 </head>
 <style>
-  /* @import url("https://fonts.cdnfonts.com/css/proxima-nova-2"); */
-
   :root {
-    /* font-family: "Proxima Nova", sans-serif; */
     width: 100%;
     height: 100%;
   }
@@ -40,7 +34,6 @@
     font-size: 40px;
     letter-spacing: -0.45px;
     color: #282c3f;
-    /* font-family: "Proxima Nova", sans-serif; */
   }
 
   .onboarding-button {
@@ -49,7 +42,6 @@
     font-weight: 700;
     padding: 0;
     letter-spacing: 0.53px;
-    /* font-family: "Proxima Nova", sans-serif; */
     border: none;
     width: 160px;
     height: 60px;
@@ -65,24 +57,39 @@
   <header>
   </header>
   <div id="root">
-    <button class="onboarding-button" onclick="(function(){
-    const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9';
-    const src = `http://localhost:3000?authToken=${authToken}`;
-    const props = {
-      domainLink: src,
-      accessToken: authToken, 
-      width: '35%', 
-      height: '100vw', 
-      backgroundColor: '#FFFFFF'
-    }
-    const test = new window.userOnboarding(props);
-    test.start();
-  }())">
+    <button class="onboarding-button" onclick="(async function(){
+      const requestBody = {
+        username: 'admin',
+        password: 'admin',
+      };
+
+      const accessToken = await fetch('https://dev.fd.1silverbullet.tech/api/v1/login', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: { 'Content-type': 'application/json; charset=UTF-8' }
+      }).then(response => response.json())
+        .then(json => json.accessToken)
+        .catch(err => console.log(err));
+
+        console.log('accessToken', accessToken)
+
+      const src = `http://localhost:3000?accessToken=${accessToken}`;
+      const props = {
+        domainLink: src,
+        accessToken: accessToken, 
+        width: '35%', 
+        height: '100%', 
+        backgroundColor: '#FFFFFF'
+      }
+      const test = new window.userOnboarding(props);
+      test.start();
+    }())">
       Begin Onboarding
     </button>
   </div>
 </body>
-<script async src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@latest/src/UserOnboarding.js"
+<script async
+  src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@0065c244a5c163fd35ac1dc449e0c21fdce648f1/src/UserOnboarding.js"
   type="module">
   </script>
 
