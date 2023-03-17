@@ -32,6 +32,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: beige;
   }
 
   h1 {
@@ -63,18 +64,26 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <header>
   </header>
-  <div id="root"></div>
-  <button class="onboarding-button" onclick="(function(){
+  <div id="root">
+    <button class="onboarding-button" onclick="(function(){
     const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9';
     const src = `http://localhost:3000?authToken=${authToken}`;
-    const test = new window.userOnboarding('', '50%', '100%', '#FFFFF');
+    const props = {
+      src: src,
+      accessToken: authToken, 
+      width: '35%', 
+      height: '100vw', 
+      backgroundColor: '#FFFFFF'
+    }
+    const test = new window.userOnboarding(props);
     test.start();
   }())">
-    Begin Onboarding
-  </button>
+      Begin Onboarding
+    </button>
+  </div>
 </body>
 <script async
-  src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@45b5f3ff45d8e193c3f9d7800e20cb9294c47ff5/src/UserOnboarding.js"
+  src="https://cdn.jsdelivr.net/gh/PriyankaBelhekar77/UserOnboardingDemo@fb32e9580d1b3513980bdc19a999b522d83468a8/src/UserOnboarding.js"
   type="module">
   </script>
 
