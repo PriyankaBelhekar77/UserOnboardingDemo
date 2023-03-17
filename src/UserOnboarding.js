@@ -23,14 +23,14 @@ class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
   constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF' }) {
-    UserOnboarding.#evaluateArgs(
-      domainLink,
-      VALIDATE_ARGS.domainLink.argName
-    );
-    UserOnboarding.#evaluateArgs(
-      accessToken,
-      VALIDATE_ARGS.accessToken.argName
-    );
+    // UserOnboarding.#evaluateArgs(
+    //   domainLink,
+    //   VALIDATE_ARGS.domainLink.argName
+    // );
+    // UserOnboarding.#evaluateArgs(
+    //   accessToken,
+    //   VALIDATE_ARGS.accessToken.argName
+    // );
 
     this.domainLink = domainLink;
     this.width = width;
@@ -39,6 +39,7 @@ class UserOnboarding {
   }
 
   static #evaluateArgs(arg, argName) {
+
     if (arg === undefined || arg === null || !arg) {
       throw new Error(
         `[1SilverBullet][user-onboarding] ${argName} is not passed but is required`
