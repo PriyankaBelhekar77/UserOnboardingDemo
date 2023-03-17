@@ -1,4 +1,5 @@
 // import { VALIDATE_ARGS } from "../constants";
+const DOMAIN_REGEX = '^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$';
 
 const VALIDATE_ARGS = {
   domainLink: {
@@ -17,6 +18,7 @@ const VALIDATE_ARGS = {
   //   error: '[1SilverBullet][user-onboarding] onClose callback provided is invalid. Please pass a function only'
   // }
 };
+
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
