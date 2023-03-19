@@ -1,5 +1,5 @@
 // import { VALIDATE_ARGS } from "../constants";
-const DOMAIN_REGEX = '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$';
+const DOMAIN_REGEX = '^https?:\/\/[^\s/$.?#].[^\s]*\?.*accessToken=.*$';
 
 const VALIDATE_ARGS = {
   domainLink: {
