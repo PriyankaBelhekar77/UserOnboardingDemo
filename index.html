@@ -27,6 +27,7 @@
     align-items: center;
     flex-direction: column;
     background-color: beige;
+    margin: 0px;
   }
 
   h1 {
@@ -52,38 +53,50 @@
   }
 </style>
 
+<script>
+  const fetchAccessToken = async () => {
+    const requestBody = {
+      username: 'admin',
+      password: 'admin',
+    };
+
+    const accessToken = await fetch('https://dev.fd.1silverbullet.tech/api/v1/login', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    }).then(response => response.json())
+      .then(json => json.accessToken)
+      .catch(err => console.log(err));
+
+    console.log("api call", accessToken)
+    return await accessToken;
+  }
+
+  const handleOnboardingBtnClick = async () => {
+    console.log("before");
+    const accessToken = await fetchAccessToken();
+    console.log("accessToken", accessToken)
+    const src = `http://localhost:3000?accessToken=${accessToken}`;
+    const props = {
+      domainLink: src,
+      accessToken: accessToken,
+      width: '30%',
+      height: '100%',
+      backgroundColor: '#FFFFFF'
+    }
+    const test = new window.userOnboarding(props);
+    console.log("after");
+    test.start();
+  }
+
+</script>
+
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <header>
   </header>
   <div id="root">
-    <button class="onboarding-button" onclick="(async function(){
-      const requestBody = {
-        username: 'admin',
-        password: 'admin',
-      };
-
-      const accessToken = await fetch('https://dev.fd.1silverbullet.tech/api/v1/login', {
-        method: 'POST',
-        body: JSON.stringify(requestBody),
-        headers: { 'Content-type': 'application/json; charset=UTF-8' }
-      }).then(response => response.json())
-        .then(json => json.accessToken)
-        .catch(err => console.log(err));
-
-        console.log('accessToken', accessToken)
-
-      const src = `http://localhost:3000?accessToken=${accessToken}`;
-      const props = {
-        domainLink: src,
-        accessToken: accessToken, 
-        width: '35%', 
-        height: '100%', 
-        backgroundColor: '#FFFFFF'
-      }
-      const test = new window.userOnboarding(props);
-      test.start();
-    }())">
+    <button class="onboarding-button" onclick="handleOnboardingBtnClick()">
       Begin Onboarding
     </button>
   </div>
