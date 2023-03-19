@@ -9,7 +9,7 @@ const VALIDATE_ARGS = {
   },
   accessToken: {
     argName: 'accessToken',
-    regex: '^[0-9a-fA-F]{64}$',
+    regex: '^[0-9a-fA-F]$',
     error: '[1SilverBullet][user-onboarding] Access token provided is invalid.'
   },
   // onClose: {
