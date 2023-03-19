@@ -68,14 +68,11 @@
       .then(json => json.accessToken)
       .catch(err => console.log(err));
 
-    console.log("api call", accessToken)
     return await accessToken;
   }
 
   const handleOnboardingBtnClick = async () => {
-    console.log("before");
     const accessToken = await fetchAccessToken();
-    console.log("accessToken", accessToken)
     const src = `http://localhost:3000?accessToken=${accessToken}`;
     const props = {
       domainLink: src,
@@ -85,7 +82,6 @@
       backgroundColor: '#FFFFFF'
     }
     const test = new window.userOnboarding(props);
-    console.log("after");
     test.start();
   }
 
