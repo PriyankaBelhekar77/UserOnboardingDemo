@@ -38,7 +38,6 @@ class UserOnboarding {
     this.domainLink = domainLink;
     this.width = width;
     this.height = height;
-    this.backgroundColor = backgroundColor;
   }
 
   static #evaluateArgs(arg, argName) {
@@ -90,7 +89,6 @@ class UserOnboarding {
     const iframe = this.#createIFrame();
     document.body.append(iframe);
     document.body.style.backgroundColor = this.backgroundColor;
-    document.body.style.opacity = "0.2";
   }
 
   start() {
