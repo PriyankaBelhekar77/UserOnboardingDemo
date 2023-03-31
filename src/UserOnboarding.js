@@ -1,4 +1,3 @@
-// import { VALIDATE_ARGS } from "../constants";
 const DOMAIN_REGEX = '^https?:\/\/[^\s/$.?#].[^\s]*\?.*accessToken=.*$';
 
 const VALIDATE_ARGS = {
@@ -12,17 +11,12 @@ const VALIDATE_ARGS = {
     regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=[\]{};': "\\|,.<>/?]).{8,}$/,
     error: '[1SilverBullet][user-onboarding] Access token provided is invalid.'
   },
-  // onClose: {
-  //   argName: 'onClose',
-  //   type: 'function',
-  //   error: '[1SilverBullet][user-onboarding] onClose callback provided is invalid. Please pass a function only'
-  // }
 };
 
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF' }) {
+  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '0', position = 'absolute', className = 'user-onboarding-iframe' }) {
     UserOnboarding.#evaluateArgs(
       domainLink,
       VALIDATE_ARGS.domainLink.argName
@@ -38,15 +32,22 @@ class UserOnboarding {
     this.domainLink = domainLink;
     this.width = width;
     this.height = height;
+    this.backgroundColor = backgroundColor;
+    this.position = position;
+    this.left = left;
+    this.top = top;
+    this.className = className;
   }
 
   static #evaluateArgs(arg, argName) {
     if (arg === undefined || arg === null || !arg) {
+      alert(`[1SilverBullet][user-onboarding] ${argName} is not passed but is required`);
       throw new Error(
         `[1SilverBullet][user-onboarding] ${argName} is not passed but is required`
       );
     }
     if (!arg.match(VALIDATE_ARGS[argName].regex)) {
+      alert(VALIDATE_ARGS[argName].error);
       throw new Error(VALIDATE_ARGS[argName].error);
     }
   }
@@ -60,6 +61,7 @@ class UserOnboarding {
       isValid = false;
     }
     if (!isValid) {
+      alert(`[1SilverBullet][user-onboarding] please provide valid URL.`);
       throw new Error(
         `[1SilverBullet][user-onboarding] please provide valid URL.`
       );
@@ -69,9 +71,10 @@ class UserOnboarding {
   #createIFrame() {
     const iframe = document.createElement("iframe");
     iframe.src = this.domainLink;
-    iframe.className = "user-onboarding-iframe";
-    iframe.style.position = "absolute";
-    iframe.style.top = "0";
+    iframe.className = this.className;
+    iframe.style.position = this.position;
+    iframe.style.top = this.top;
+    iframe.style.left = this.left;
     iframe.width = this.width;
     iframe.height = this.height;
     iframe.style.border = "none";
@@ -87,8 +90,13 @@ class UserOnboarding {
 
   #renderIFrame() {
     const iframe = this.#createIFrame();
-    document.body.append(iframe);
-    document.body.style.backgroundColor = this.backgroundColor;
+    const container = document.createElement("div");
+    container.setAttribute("id", "iframe-container");
+    container.append(iframe);
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.backgroundColor = this.backgroundColor;
+    document.body.append(container);
   }
 
   start() {

@@ -72,13 +72,17 @@
 
   const handleOnboardingBtnClick = async () => {
     const accessToken = await fetchAccessToken();
-    const src = `http://localhost:3000?accessToken=${accessToken}`;
+    const src = `https://dev.fd.1silverbullet.tech?accessToken=${accessToken}`;
     const props = {
       domainLink: src,
       accessToken: accessToken,
       width: '30%',
       height: '100%',
-      backgroundColor: 'rgb(117 190 218 / 0.5)'
+      backgroundColor: 'rgb(117 190 218 / 0.5)',
+      top: '0',
+      left: '0',
+      position: 'absolute',
+      className: 'user-onboarding-iframe'
     }
     const test = new window.userOnboarding(props);
     test.start();
