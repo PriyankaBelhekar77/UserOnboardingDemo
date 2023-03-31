@@ -16,7 +16,7 @@ const VALIDATE_ARGS = {
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '0', position = 'absolute', className = 'user-onboarding-iframe' }) {
+  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '', position = 'absolute', className = 'user-onboarding-iframe' }) {
     UserOnboarding.#evaluateArgs(
       domainLink,
       VALIDATE_ARGS.domainLink.argName
@@ -95,6 +95,7 @@ class UserOnboarding {
     container.append(iframe);
     container.style.width = "100%";
     container.style.height = "100%";
+    container.style.position = this.position;
     container.style.backgroundColor = this.backgroundColor;
     document.body.append(container);
   }
