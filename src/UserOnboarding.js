@@ -1,4 +1,4 @@
-const DOMAIN_REGEX = '^https?:\/\/[^\s/$.?#].[^\s]*\?.*accessToken=.*$';
+const DOMAIN_REGEX = '^https?:\/\/[^\s/$.?#].[^\s]*\$';
 
 const VALIDATE_ARGS = {
   domainLink: {
@@ -22,7 +22,7 @@ class UserOnboarding {
       VALIDATE_ARGS.domainLink.argName
     );
 
-    UserOnboarding.#evaluateArgs(
+    accessToken && UserOnboarding.#evaluateArgs(
       accessToken,
       VALIDATE_ARGS.accessToken.argName
     );
