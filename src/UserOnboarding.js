@@ -1,4 +1,4 @@
-const DOMAIN_REGEX = '^https?:\/\/[^\s/$.?#].[^\s]*\$';
+const DOMAIN_REGEX = /^(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?$/;
 
 const VALIDATE_ARGS = {
   domainLink: {
