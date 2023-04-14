@@ -16,7 +16,7 @@ const VALIDATE_ARGS = {
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor({ distributerId = "", distributerLogo = "", domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '', position = 'absolute', className = 'user-onboarding-iframe' }) {
+  constructor({ distributerId = "", distributerLogoPath = "", domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '', position = 'absolute', className = 'user-onboarding-iframe' }) {
     // UserOnboarding.#evaluateArgs(
     //   domainLink,
     //   VALIDATE_ARGS.domainLink.argName
@@ -32,7 +32,7 @@ class UserOnboarding {
     const paramArray = [];
     accessToken && paramArray.push(`accessToken=${accessToken}`);
     distributerId && paramArray.push(`distributerId=${distributerId}`);
-    distributerLogo && paramArray.push(`distributerLogo=${distributerLogo}`);
+    distributerLogoPath && paramArray.push(`distributerLogoPath=${distributerLogoPath}`);
 
     const queryParam = paramArray.join("&");
 
