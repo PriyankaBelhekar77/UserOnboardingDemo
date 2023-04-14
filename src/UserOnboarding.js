@@ -16,11 +16,11 @@ const VALIDATE_ARGS = {
 class UserOnboarding {
   #iFrame = document.createElement("iframe");
 
-  constructor({ domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '', position = 'absolute', className = 'user-onboarding-iframe' }) {
-    UserOnboarding.#evaluateArgs(
-      domainLink,
-      VALIDATE_ARGS.domainLink.argName
-    );
+  constructor({ distributerId = "", distributerLogo = "", domainLink, accessToken, width = '35%', height = '100vw', backgroundColor = '#FFFFFF', top = '0', left = '', position = 'absolute', className = 'user-onboarding-iframe' }) {
+    // UserOnboarding.#evaluateArgs(
+    //   domainLink,
+    //   VALIDATE_ARGS.domainLink.argName
+    // );
 
     accessToken && UserOnboarding.#evaluateArgs(
       accessToken,
@@ -29,7 +29,14 @@ class UserOnboarding {
 
     UserOnboarding.#isValidUrl(domainLink);
 
-    this.domainLink = domainLink;
+    const paramArray = [];
+    accessToken && paramArray.push(`accessToken=${accessToken}`);
+    distributerId && paramArray.push(`distributerId=${distributerId}`);
+    distributerLogo && paramArray.push(`distributerLogo=${distributerLogo}`);
+
+    const queryParam = paramArray.join("&");
+
+    this.domainLink = queryParam ? domainLink + "?" + queryParam : domainLink;
     this.width = width;
     this.height = height;
     this.backgroundColor = backgroundColor;
